@@ -35,16 +35,23 @@ html, body #fullheight {
     width: 100%;
     background-color: black;
 }
-.button
- {
+.item {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 100px;
     color: white;
     border-radius: 100%;
     padding: 10px;
     width: 210px;
     height: 210px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
+ }
 
-  
+ .percent {
+    background-color: #a5a5a5;
+    border: none;
+    color: black;
  }
