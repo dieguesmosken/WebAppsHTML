@@ -1,0 +1,57 @@
+/* codigo relogio digital em css
+// Autor: Matheus Mosken Diegues (TeuzinYTBR)
+// Data: 10/12/2022
+// Versão: 1.0*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    /* background: linear-gradient(120deg, #ffee00d8, #e21a1a); */
+    background: linear-gradient(120deg, #4d4a24d8, #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.relogio{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px 0 rgba(0,0,0,.5);
+    
+    width: 550px;
+    height: 200px;
+    
+}
+.relogio div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 60px;     */
+    color: #fff;
+    background: rgba(5,5,5,.9);
+    /* background: linear-gradient(120deg, #ffee00d8, #e21a1a); */
+    border-radius: 7px;
+    box-shadow: 5px 5px 15px 0 rgba(0,0,0,.7);
+    width: 150px;
+    height: 170px;
+}
+.relogio span{
+    font-size: 60px;
+    font-weight: bolder;
+}
+.relogio span.tempo {
+    font-size: 30px;
+    font-weight: 500;
+}
