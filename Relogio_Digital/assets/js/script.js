@@ -4,9 +4,6 @@
 // Versão: 1.0
 
 // Função para atualizar o relogio
-// const horas = document.getElementById('horas');
-// const minutos = document.getElementById('minutos');
-// const segundos = document.getElementById('segundos');
 
 function atualizarRelogio() {
     const data = new Date();
@@ -36,8 +33,7 @@ function atualizarRelogio() {
     } else {
         //console.log(data.getSeconds());
         segundos.innerHTML =  data.getSeconds();
-}
-}
+}}
 
 // Função para atualizar o relogio a cada segundo
 setInterval(atualizarRelogio, 1000);
