@@ -81,28 +81,42 @@ class Pacman {
     }
 
     changeDirectionIfPossible() {
-        switch (this.nextDirection) {
-            case DIRECTION_RIGHT:
-                if (map[this.getMapY()][this.getMapXRightSide()] !== 1) {
-                    this.direction = this.nextDirection;
-                }
-                break;
-            case DIRECTION_LEFT:
-                if (map[this.getMapY()][this.getMapX()] !== 1) {
-                    this.direction = this.nextDirection;
-                }
-                break;
-            case DIRECTION_UP:
-                if (map[this.getMapY()][this.getMapX()] !== 1) {
-                    this.direction = this.nextDirection;
-                }
-                break;
-            case DIRECTION_DOWN:
-                if (map[this.getMapYRightSide()][this.getMapX()] !== 1) {
-                    this.direction = this.nextDirection;
-                }
-                break;
+        if (this.direction === this.nextDirection) {
+            return;
         }
+        let tempDirection = this.direction;
+        this.direction = this.nextDirection;
+        this.moveForwards();
+        if (this.checkCollision()) {
+            this.moveBackwards();
+            this.direction = tempDirection;
+        } else {
+            this.moveBackwards();
+        }
+
+        // switch (this.nextDirection) {
+        //     case DIRECTION_RIGHT:
+        //         if (map[this.getMapY()][this.getMapXRightSide()] !== 1) {
+        //             this.direction = this.nextDirection;
+        //         }
+        //         break;
+        //     case DIRECTION_LEFT:
+        //         if (map[this.getMapY()][this.getMapX()] !== 1) {
+        //             this.direction = this.nextDirection;
+        //         }
+        //         break;
+        //     case DIRECTION_UP:
+        //         if (map[this.getMapY()][this.getMapX()] !== 1) {
+        //             this.direction = this.nextDirection;
+        //         }
+        //         break;
+        //     case DIRECTION_DOWN:
+        //         if (map[this.getMapYRightSide()][this.getMapX()] !== 1) {
+        //             this.direction = this.nextDirection;
+        //         }
+        //         break;
+        // }
+
     }
 
     changeAnimation() {

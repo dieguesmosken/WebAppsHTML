@@ -14,6 +14,7 @@ let wallColor = "#342dca";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#000000";
+let foodColor = "#feb897";
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -66,10 +67,28 @@ let update = () => {
     // ghost.update();
 }
 
+let drawFoods = () => {
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[0].length; j++) {
+            if (map[i][j] === 2) {
+                createRect(
+                    j * oneBlockSize + oneBlockSize / 3,
+                    i * oneBlockSize + oneBlockSize / 3,
+                    oneBlockSize / 3,
+                    oneBlockSize / 3,
+                    foodColor
+                );
+            }
+        }
+    }
+}
+
+
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, 'black');
     //canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     drawWalls();
+    drawFoods();
     pacman.draw();
     // ghost.draw();
 }
