@@ -27,7 +27,16 @@ class Pacman {
         this.checkGhostCollision();
     }
     eat() {
-        this.isEating = true;
+        for (let i = 0; i < map.length; i++) {
+            for (let j = 0; j < map[0].length; j++) {
+                if (map[i][j] === 2) {
+                    if (this.getMapX() === j && this.getMapY() === i) {
+                        map[i][j] = 3;
+                        score ++;
+                    }
+                }
+            }
+        }
     }
 
     moveBackwards() {

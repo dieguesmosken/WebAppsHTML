@@ -1,3 +1,5 @@
+const { renderPixels } = require("js-pixel-fonts");
+
 const canvas = document.getElementById('canvas');
 const canvasContext = canvas.getContext('2d');
 const pacmanFrames = document.getElementById('animations');
@@ -15,6 +17,9 @@ let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#000000";
 let foodColor = "#feb897";
+let score = 0;
+//let scoreColor = "#ffffff";
+//let scoreFont = "20px Arial";
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -63,6 +68,8 @@ let gameLoop = () => {
 let update = () => {
     pacman.moveProcess();
     pacman.eat();
+
+
     // pacman.update();
     // ghost.update();
 }
@@ -83,11 +90,26 @@ let drawFoods = () => {
     }
 }
 
+let drawScore = () => {
+    
+    canvasContext.textAlign = "left";
+    
+    canvasContext.fontWeight = "bold";
+    canvasContext.font = "40px pngjs";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText(
+        "Score: " + score,
+        0,
+        oneBlockSize * (map.length + 1) + 10
+    );
+    
+}
 
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, 'black');
     //canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     drawWalls();
+    drawScore();
     drawFoods();
     pacman.draw();
     // ghost.draw();
@@ -106,7 +128,7 @@ let drawWalls = () => {
                     oneBlockSize,
                     wallColor
                 );
-                if(j > 0 && map[i][j-1] === 1) {
+                if (j > 0 && map[i][j - 1] === 1) {
                     createRect(
                         j * oneBlockSize,
                         i * oneBlockSize + wallOffset,
@@ -115,7 +137,7 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(j < map[0].length - 1 && map[i][j+1] === 1) {
+                if (j < map[0].length - 1 && map[i][j + 1] === 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
                         i * oneBlockSize + wallOffset,
@@ -124,7 +146,7 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(i > 0 && map[i-1][j] === 1) {
+                if (i > 0 && map[i - 1][j] === 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
                         i * oneBlockSize,
@@ -133,7 +155,7 @@ let drawWalls = () => {
                         wallInnerColor
                     );
                 }
-                if(i < map.length - 1 && map[i+1][j] === 1) {
+                if (i < map.length - 1 && map[i + 1][j] === 1) {
                     createRect(
                         j * oneBlockSize + wallOffset,
                         i * oneBlockSize + wallOffset,
@@ -180,24 +202,24 @@ window.addEventListener('keydown', (event) => {
     let k = event.keyCode
 
     setTimeout(() => {
-        if (k === 37 || k === 65)  { // left 
+        if (k === 37 || k === 65) { // left 
             pacman.nextDirection = DIRECTION_LEFT;
         }
 
         if (k === 38 || k === 87) { // up
             pacman.nextDirection = DIRECTION_UP;
         }
-            
+
         if (k === 39 || k === 68) { // right
             pacman.nextDirection = DIRECTION_RIGHT;
-            
+
         }
 
         if (k === 40 || k === 83) { // down
             pacman.nextDirection = DIRECTION_DOWN;
-            
+
         }
-            
+
     }, 1);
 
 
