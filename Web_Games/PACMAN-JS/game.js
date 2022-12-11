@@ -1,4 +1,4 @@
-const { renderPixels } = require("js-pixel-fonts");
+
 
 const canvas = document.getElementById('canvas');
 const canvasContext = canvas.getContext('2d');
@@ -25,14 +25,14 @@ const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_DOWN = 1;
-// let lives = 3;
-// let ghostCount = 4;
-// let ghostImageLocations = [
-//     { x: 0, y: 0 },
-//     { x: 176, y: 0 },
-//     { x: 0, y: 121 },
-//     { x: 176, y: 121 },
-// ];
+let lives = 3;
+let ghostCount = 4;
+let ghostImageLocations = [
+    { x: 0, y: 0 },
+    { x: 176, y: 0 },
+    { x: 0, y: 121 },
+    { x: 176, y: 121 },
+];
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -45,7 +45,7 @@ let map = [
     [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
-    [2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2],
+    [1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
@@ -90,12 +90,29 @@ let drawFoods = () => {
     }
 }
 
+let drawLocation = () => {
+    canvasContext.font = "20px Arial Black";
+    canvasContext.fillStyle = "white";
+
+    canvasContext.fillText(
+        "X: " + pacman.x + " Y: " + pacman.y,
+        280,
+        oneBlockSize * (map.length + 1) + 10
+    );
+}
+
+// let drawGhostLocation = () => {
+//     canvasContext.font = "20px Arial Black";
+//     canvasContext.fillStyle = "white";
+//     canvasContext.fillText(
+//         "X: " + ghost.x + " Y: " + ghost.y,
+//         0,
+//         oneBlockSize * (map.length + 1) + 30
+//     );
+
 let drawScore = () => {
-    
-    canvasContext.textAlign = "left";
-    
-    canvasContext.fontWeight = "bold";
-    canvasContext.font = "40px pngjs";
+   
+    canvasContext.font = "40px Arial Black";
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
         "Score: " + score,
@@ -109,9 +126,11 @@ let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, 'black');
     //canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     drawWalls();
-    drawScore();
-    drawFoods();
+    
     pacman.draw();
+    drawFoods();
+    drawScore();
+    drawLocation();
     // ghost.draw();
 }
 
@@ -182,45 +201,45 @@ createNewPacman();
 gameLoop();
 
 
-// window.addEventListener('keydown', (e) => {
-//     switch (e.key) {
-//         case 'ArrowUp':
-//             pacman.moveUp();
-//             break;
-//         case 'ArrowDown':
-//             pacman.moveDown();
-//             break;
-//         case 'ArrowLeft':
-//             pacman.moveLeft();
-//             break;
-//         case 'ArrowRight':
-//             pacman.moveRight();
-//             break;
-//     }
-// });
-window.addEventListener('keydown', (event) => {
-    let k = event.keyCode
-
-    setTimeout(() => {
-        if (k === 37 || k === 65) { // left 
-            pacman.nextDirection = DIRECTION_LEFT;
-        }
-
-        if (k === 38 || k === 87) { // up
+window.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case 'ArrowUp':
             pacman.nextDirection = DIRECTION_UP;
-        }
-
-        if (k === 39 || k === 68) { // right
-            pacman.nextDirection = DIRECTION_RIGHT;
-
-        }
-
-        if (k === 40 || k === 83) { // down
+            break;
+        case 'ArrowDown':
             pacman.nextDirection = DIRECTION_DOWN;
-
-        }
-
-    }, 1);
-
-
+            break;
+        case 'ArrowLeft':
+            pacman.nextDirection = DIRECTION_LEFT;
+            break;
+        case 'ArrowRight':
+            pacman.nextDirection = DIRECTION_RIGHT;
+            break;
+    }
 });
+// window.addEventListener('keydown', (event) => {
+//     let k = event.keyCode
+
+//     setTimeout(() => {
+//         if (k === 37 || k === 65) { // left 
+//             pacman.nextDirection = DIRECTION_LEFT;
+//         }
+
+//         if (k === 38 || k === 87) { // up
+//             pacman.nextDirection = DIRECTION_UP;
+//         }
+
+//         if (k === 39 || k === 68) { // right
+//             pacman.nextDirection = DIRECTION_RIGHT;
+
+//         }
+
+//         if (k === 40 || k === 83) { // down
+//             pacman.nextDirection = DIRECTION_DOWN;
+
+//         }
+
+//     }, 1);
+
+
+// });
