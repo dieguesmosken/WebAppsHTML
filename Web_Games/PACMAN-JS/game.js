@@ -1,5 +1,4 @@
 
-
 const canvas = document.getElementById('canvas');
 const canvasContext = canvas.getContext('2d');
 const pacmanFrames = document.getElementById('animations');
@@ -199,6 +198,73 @@ let createNewPacman = () => {
 }
 createNewPacman();
 gameLoop();
+
+//touch controls
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+window.addEventListener('touchstart', touchStart, false);
+window.addEventListener('touchend', touchEnd, false);
+
+let touchStart = (e) => {
+    console.log(e);
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}
+
+let touchEnd = (e) => {
+    console.log(e);
+    touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
+    handleTouch();
+}
+
+let handleTouch = () => {
+    let xDiff = touchStartX - touchEndX;
+    let yDiff = touchStartY - touchEndY;
+
+    console.log(xDiff, yDiff);
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+            pacman.nextDirection = DIRECTION_LEFT;
+        } else {
+            pacman.nextDirection = DIRECTION_RIGHT;
+        }
+    } else {
+        if (yDiff > 0) {
+            pacman.nextDirection = DIRECTION_UP;
+        } else {
+            pacman.nextDirection = DIRECTION_DOWN;
+        }
+    }
+}
+//touch start and end
+// make touch start controls 
+
+// let touchStart = (e) => {
+//     console.log(e);
+//     touchStartX = e.touches[0].clientX;
+//     touchStartY = e.touches[0].clientY;
+// }
+
+// let touchEnd = (e) => {
+//     console.log(e);
+//     touchEndX = e.changedTouches[0].clientX;
+//     touchEndY = e.changedTouches[0].clientY;
+//     handleTouch();   
+// }
+
+// let handleTouch = () => {
+//     let xDiff = touchStartX - touchEndX;
+
+
+
+
+
+
 
 
 window.addEventListener('keydown', (e) => {
