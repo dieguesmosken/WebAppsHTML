@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Calculadora</title>
+
+</head>
+
+<body>
+    <div style="border: 1px blue solid ; text-align: center;">
+        <form name="calc" method="post" action="">
+            <table>
+                <tr>
+                    <td><input type="text" class="tela" name="visor"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><input type="button" class="botao4" name="limpar" value="CE" onclick="limparTela()"></td>
+                    <td><input type="button" class="botao4" name="voltarumvez" value="C" onclick="umavez()"></td>
+                    <td><input type="button" class="botao4" name="voltarumcarac" value="&lt;-" onclick="voltar()"></td>
+                    <td><input type="button" class="botao2" name="div" value="&#10135" onclick="divisao()"></td>
+
+
+                </tr>
+                <tr>
+                    <td><input type="button" class="botao1" name="num7" value="7" onclick="mostraNum(7)"></td>
+                    <td><input type="button" class="botao1" name="num8" value="8" onclick="mostraNum(8)"></td>
+                    <td><input type="button" class="botao1" name="num9" value="9" onclick="mostraNum(9)"></td>
+                    <td><input type="button" class="botao2" name="mult" value="*" onclick="multiplicacao()"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="botao1" name="num4" value="4" onclick="mostraNum(4)"></td>
+                    <td><input type="button" class="botao1" name="num5" value="5" onclick="mostraNum(5)"></td>
+                    <td><input type="button" class="botao1" name="num6" value="6" onclick="mostraNum(6)"></td>
+                    <td><input type="button" class="botao2" name="sub" value="-" onclick="subtracao()"></td>
+
+                </tr>
+                <tr>
+                    <td><input type="button" class="botao1" name="num1" value="1" onclick="mostraNum(1)"></td>
+                    <td><input type="button" class="botao1" name="num2" value="2" onclick="mostraNum(2)"></td>
+                    <td><input type="button" class="botao1" name="num3" value="3" onclick="mostraNum(3)"></td>
+                    <td><input type="button" class="botao2" name="som" value="+" onclick="soma()"></td>
+
+                </tr>
+                <tr>
+                    <td><input type="button" class="botao1" name="virgula" value="," onclick="mostraNum('.')"></td>
+                    <td><input type="button" class="botao1" name="num0" value="0" onclick="mostraNum(0)"></td>
+                    <td colspan="2"><input type="button" class="botao3" name="calcu" value="=" onclick="calcular()"></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var valor1, valor2, resultado, operador;
+
+        function mostraNum(num) {
+            document.calc.visor.value = document.calc.visor.value + num;
+        }
+
+        function limparTela() {
+            document.calc.visor.value = '';
+            valor1 = '';
+        }
+
+        function umavez() {
+            document.calc.visor.value = '';
+        }
+
+        function voltar() {
+            var volt = document.calc.visor.value;
+            document.calc.visor.value = volt.substr(0, volt.length - 1);
+        }
+
+
+        function soma() {
+            operador = "+";
+            valor1 = parseFloat(document.calc.visor.value);
+            umavez();
+        }
+
+        function subtracao() {
+            operador = '-';
+            valor1 = parseFloat(document.calc.visor.value);
+            umavez();
+
+        }
+
+        function multiplicacao() {
+            operador = '*';
+            valor1 = parseFloat(document.calc.visor.value);
+            umavez();
+
+        }
+
+        function divisao() {
+            operador = '/';
+            valor1 = parseFloat(document.calc.visor.value);
+            umavez();
+
+        }
+
+        function calcular() {
+            valor2 = parseFloat(document.calc.visor.value);
+
+            if (operador == "+") {
+                resultado = valor1 + valor2;
+            } else if (operador == "-") {
+                resultado = valor1 - valor2;
+            } else if (operador == "*") {
+                resultado = valor1 * valor2;
+            } else if (operador == "/") {
+                resultado = valor1 / valor2;
+            } else {
+                document.calc.visor.value = "ERRO";
+            }
+            document.calc.visor.value = resultado;
+
+        }
+    </script>
+
+</body>
+
+</html>

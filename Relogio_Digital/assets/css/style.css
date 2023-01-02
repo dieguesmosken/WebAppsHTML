@@ -14,7 +14,8 @@
 
 body{
     /* background: linear-gradient(120deg, #ffee00d8, #e21a1a); */
-    background: linear-gradient(120deg, #4d4a24d8, #000000);
+   /* background: linear-gradient(120deg, #4d4a24d8, #000000);*/
+   background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +42,7 @@ body{
     /* font-size: 60px;     */
     color: #fff;
     background: rgba(5,5,5,.9);
+    /*background: transparent;*/
     /* background: linear-gradient(120deg, #ffee00d8, #e21a1a); */
     border-radius: 7px;
     box-shadow: 5px 5px 15px 0 rgba(0,0,0,.7);

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../Examples/css/fontawesome/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="buttons">
+                <button class="btn" data="bold">
+                        <i class="fa fa-bold"></i>
+                </button>
+
+
+                <button class="btn" data="italic">
+                        <i class="fa fa-italic"></i>
+                </button>
+
+                <button class="btn" data="underline">
+                        <i class="fa fa-underline"></i>
+                </button>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" data="insertUnorderedList">
+                    <i class="fa fa-list-ul"></i>
+                </button>
+
+                <button class="btn" data="insertOrderedList">
+                    <i class="fa fa-list-ol"></i>
+                </button>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" data="CreateLink">
+                    <i class="fa fa-link"></i>
+                </button>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" data="justifyLeft">
+                    <i class="fa fa-align-left"></i>
+                </button>
+
+                <button class="btn" data="justifyCenter">
+                    <i class="fa fa-align-center"></i>
+                </button>
+
+                <button class="btn" data="justifyRight">
+                    <i class="fa fa-align-right"></i>
+                </button>
+
+                <button class="btn" data="justifyFull">
+                    <i class="fa fa-align-justify"></i>
+                </button>
+
+
+            </div>
+
+            <div class="buttons">
+                <button class="btn" data="insertImage">
+                    <i class="fa fa-image"></i>
+                </button>
+            </div>
+
+
+        </header>
+        <div class="fonts">
+            <select name="" id="select_font" onchange="updateFont()">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Impact">Impact</option>
+                <option value="Palitico">Palitico</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Sans Serif">Sans Serif</option>
+                
+            </select>
+            <div class="fontSize">
+                <button class="fontSizeUp">Up
+                    <!-- <i class="fa fa-arrow-up"></i> -->
+                </button>
+                <span class="fontSizeSpan">font-size</span>
+                <button class="fontSizeDown">Down
+                    <!-- <i class="fa fa-arrow-down"></i> -->
+                </button>
+            </div>
+        </div>
+        <div class="content" contenteditable="true">
+
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>

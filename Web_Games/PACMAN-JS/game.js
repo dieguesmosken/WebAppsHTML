@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('canvas');
 const canvasContext = canvas.getContext('2d');
 const pacmanFrames = document.getElementById('animations');
@@ -17,8 +16,10 @@ let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "#000000";
 let foodColor = "#feb897";
 let score = 0;
-//let scoreColor = "#ffffff";
-//let scoreFont = "20px Arial";
+let scoreColor = "#fff";
+let ghosts = [];
+let scoreFont = "40px Retro Land Mayhem";
+let locationFont = "20px Retro Land Mayhem";
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -26,7 +27,10 @@ const DIRECTION_LEFT = 2;
 const DIRECTION_DOWN = 1;
 let lives = 3;
 let ghostCount = 4;
-let ghostImageLocations = [
+
+
+
+let ghostLocations = [
     { x: 0, y: 0 },
     { x: 176, y: 0 },
     { x: 0, y: 121 },
@@ -46,8 +50,8 @@ let map = [
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
@@ -59,6 +63,17 @@ let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
+let randomTargetsForGhosts = [
+    { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
+    { x: 1 * oneBlockSize, y: (map.length - 2) * oneBlockSize },
+    { x: (map[0].length - 2) * oneBlockSize, y: oneBlockSize },
+    {
+        x: (map[0].length - 2) * oneBlockSize,
+        y: (map.length - 2) * oneBlockSize
+    },
+
+]
+
 let gameLoop = () => {
     update();
     draw();
@@ -67,9 +82,13 @@ let gameLoop = () => {
 let update = () => {
     pacman.moveProcess();
     pacman.eat();
+    for (let i = 0; i < ghosts.length; i++) {
+        ghosts[i].moveProcess();
 
-
-    // pacman.update();
+    }
+    if (pacman.checkGhostCollision()) {
+        console.log("hit");
+    }
     // ghost.update();
 }
 
@@ -90,46 +109,75 @@ let drawFoods = () => {
 }
 
 let drawLocation = () => {
-    canvasContext.font = "20px Arial Black";
+    canvasContext.font = locationFont;
     canvasContext.fillStyle = "white";
-
     canvasContext.fillText(
         "X: " + pacman.x + " Y: " + pacman.y,
         280,
-        oneBlockSize * (map.length + 1) + 10
+        oneBlockSize * (map.length + 1) + 15
     );
 }
 
-// let drawGhostLocation = () => {
-//     canvasContext.font = "20px Arial Black";
-//     canvasContext.fillStyle = "white";
-//     canvasContext.fillText(
-//         "X: " + ghost.x + " Y: " + ghost.y,
-//         0,
-//         oneBlockSize * (map.length + 1) + 30
-//     );
+
+
+let drawGhostLocation = () => {
+    let alturaH = 30;
+    let larguraW = 0;
+    let locationsColor = [
+        "red",
+        "orange",
+        "pink",
+        "cyan",
+    ];
+    for (let i = 0; i < ghosts.length; i++) {
+        canvasContext.font = locationFont;
+        canvasContext.fillStyle = locationsColor[i];
+        canvasContext.fillText(
+            "X: " + ghosts[i].x + " Y: " + ghosts[i].y,
+            ghosts[i].x,
+            ghosts[i].y
+            //larguraW,
+            //oneBlockSize * (map.length + 1) + alturaH
+        );
+        alturaH += (oneBlockSize * 2);
+        larguraW += 0;
+
+    }
+
+}
 
 let drawScore = () => {
-   
-    canvasContext.font = "40px Arial Black";
-    canvasContext.fillStyle = "white";
+
+    canvasContext.font = "40px Retro Land Mayhem";
+    canvasContext.fillStyle = scoreColor;
     canvasContext.fillText(
         "Score: " + score,
-        0,
-        oneBlockSize * (map.length + 1) + 10
+        5,
+        oneBlockSize * (map.length + 1) + 15
     );
-    
+
+
+}
+
+let drawGhosts = () => {
+    for (let i = 0; i < ghosts.length; i++) {
+        ghosts[i].draw();
+    }
 }
 
 let draw = () => {
+
     createRect(0, 0, canvas.width, canvas.height, 'black');
     //canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     drawWalls();
-    
+
     pacman.draw();
     drawFoods();
     drawScore();
+    drawGhosts();
     drawLocation();
+    drawGhostLocation();
+
     // ghost.draw();
 }
 
@@ -195,52 +243,97 @@ let createNewPacman = () => {
         oneBlockSize,
         oneBlockSize / 5
     );
-}
-createNewPacman();
-gameLoop();
 
-//touch controls
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
-
-window.addEventListener('touchstart', touchStart, false);
-window.addEventListener('touchend', touchEnd, false);
-
-let touchStart = (e) => {
-    console.log(e);
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
 }
 
-let touchEnd = (e) => {
-    console.log(e);
-    touchEndX = e.changedTouches[0].clientX;
-    touchEndY = e.changedTouches[0].clientY;
-    handleTouch();
-}
+let createGhosts = () => {
+    ghosts = []
+    for (let i = 0; i < ghostCount; i++) {
+        let newGhost = new Ghost(
+            9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+            10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+            oneBlockSize,
+            oneBlockSize,
+            pacman.speed / 2,
+            ghostLocations[i % 4].x,
+            ghostLocations[i % 4].y,
+            124,
+            116,
+            6 + i
 
-let handleTouch = () => {
-    let xDiff = touchStartX - touchEndX;
-    let yDiff = touchStartY - touchEndY;
+        );
+        ghosts.push(newGhost);
 
-    console.log(xDiff, yDiff);
-
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-        if (xDiff > 0) {
-            pacman.nextDirection = DIRECTION_LEFT;
-        } else {
-            pacman.nextDirection = DIRECTION_RIGHT;
-        }
-    } else {
-        if (yDiff > 0) {
-            pacman.nextDirection = DIRECTION_UP;
-        } else {
-            pacman.nextDirection = DIRECTION_DOWN;
-        }
     }
 }
+
+// let createGhosts2 = () => {
+//     ghosts = []
+//     for (let i = 0; i < 8; i++) {
+//         let newGhost2 = new Ghost(
+//             9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+//             10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize,
+//             oneBlockSize,
+//             oneBlockSize,
+//             pacman.speed / 2,
+//             ghostLocations[i % 4].x,
+//             ghostLocations[i % 4].y,
+//             124,
+//             116,
+//             6 + i
+
+//         );
+//         ghosts.push(newGhost2);
+
+//     }
+// }
+
+createNewPacman();
+createGhosts();
+gameLoop();
+
+// //touch controls
+// let touchStartX = 0;
+// let touchStartY = 0;
+// let touchEndX = 0;
+// let touchEndY = 0;
+
+// window.addEventListener('touchstart', touchStart, false);
+// window.addEventListener('touchend', touchEnd, false);
+
+// let touchStart = (e) => {
+//     console.log(e);
+//     touchStartX = e.touches[0].clientX;
+//     touchStartY = e.touches[0].clientY;
+// }
+
+// let touchEnd = (e) => {
+//     console.log(e);
+//     touchEndX = e.changedTouches[0].clientX;
+//     touchEndY = e.changedTouches[0].clientY;
+//     handleTouch();
+// }
+
+// let handleTouch = () => {
+//         let xDiff = touchStartX - touchEndX;
+//         let yDiff = touchStartY - touchEndY;
+
+//         console.log(xDiff, yDiff);
+
+//         if (Math.abs(xDiff) > Math.abs(yDiff)) {
+//             if (xDiff > 0) {
+//                 pacman.nextDirection = DIRECTION_LEFT;
+//             } else {
+//                 pacman.nextDirection = DIRECTION_RIGHT;
+//             }
+//         } else {
+//             if (yDiff > 0) {
+//                 pacman.nextDirection = DIRECTION_UP;
+//             } else {
+//                 pacman.nextDirection = DIRECTION_DOWN;
+//             }
+//         }
+//     }
 //touch start and end
 // make touch start controls 
 
@@ -259,12 +352,6 @@ let handleTouch = () => {
 
 // let handleTouch = () => {
 //     let xDiff = touchStartX - touchEndX;
-
-
-
-
-
-
 
 
 window.addEventListener('keydown', (e) => {

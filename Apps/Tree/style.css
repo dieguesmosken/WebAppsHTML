@@ -1,0 +1,100 @@
+header,
+nav,
+footer {
+    display: block;
+}
+
+#siteName {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    list-style-type: none;
+    outline: none;
+    padding: 5px;
+}
+
+li ul {
+    margin-top: 5px;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -999em;
+}
+
+.tree {
+    padding: 10px;
+    margin-bottom: 2em;
+    border: 1px solid #999;
+}
+
+.hasChildren {
+    position: relative;
+}
+
+.tree li ul {
+    display: none;
+}
+
+.tree a {
+    padding: 2px 5px 2px 0;
+}
+
+.tree a:focus {
+    outline: 2px dotted #f00;
+}
+
+.tree li li a {
+    background-image: url("img/raquo-blue.png");
+    background-repeat: no-repeat;
+    background-position: 8px 0.5em;
+    padding-left: 40px;
+}
+
+.tree .hasChildren a {
+    background-image: none;
+    padding-left: 30px;
+}
+
+.tree li .noChildren a {
+    background-image: url("img/raquo-blue.png");
+    padding-left: 25px;
+}
+
+.toggle {
+    background-position: left top;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    left: 10px;
+    top: 0.4em;
+}
+
+.tree .expanded {
+    background-image: url("img/minus-blue.png");
+}
+
+.tree .collapsed {
+    background-image: url("img/plus-blue.png");
+}
+
+.tree .expanded.hover {
+    background-image: url("img/minus-blue-hover.png");
+}
+
+.tree .collapsed.hover {
+    background-image: url("img/plus-blue-hover.png");
+}
+
+#footer {
+    clear: both;
+}

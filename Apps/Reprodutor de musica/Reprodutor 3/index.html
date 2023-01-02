@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Player</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../Examples/css/fontawesome/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="player-wrapper">
+        <div class="player">
+            <!-- <img src="img/play.png" alt="Play" id="play" width="48" height="48"> -->
+            <i class="fa fa-play fa-2x" id="play" width="48" height="48"></i>
+            <i class="fa fa-pause fa-2x" id="pause" width="48" height="48"></i>
+            <i class="fa fa-stop fa-2x" id="stop" width="48" height="48"></i>
+
+            <!-- <img src="img/pause.png" alt="Pause" id="pause" width="48" height="48" width="48" height="48">
+            <img src="img/stop.png" alt="Stop" id="stop" width="48" height="48"> -->
+        </div>
+        <div class="slider_container">
+            <div class="current-time">00:00</div>
+            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+            <div class="total-duration">00:00</div>
+        </div>
+
+        <!-- Define the section for displaying the volume slider-->
+        <div class="slider_container">
+            <i class="fa fa-volume-down"></i>
+            <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+            <i class="fa fa-volume-up"></i>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

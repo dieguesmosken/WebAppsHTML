@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    color: #ffff;
+    background: #000;
+}
+
+#mycanvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url(Assets/bg.gif); */
+    background-size: cover;
+}

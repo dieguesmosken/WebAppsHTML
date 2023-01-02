@@ -1,0 +1,234 @@
+
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+  background: #25d4b4;
+    height: 100%;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+
+.menubar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 5px solid rgba(66, 244, 176, 0.3);
+}
+
+.menubar li{
+  float: left;
+  width: 19.1%;
+}
+
+.menubar li:nth-child(0){
+  text-align: left;
+}
+.menubar li:nth-child(2){
+  text-align: center;
+}
+.menubar li:nth-child(3){
+  text-align: right;
+}
+
+.menubar li a {   
+    display: block;
+    text-decoration: none;
+  font-size: 1.5em;
+  color: #555;
+}
+ 
+.menubar li a.active {
+    color: #111;
+}
+
+.menubar li a i{
+  padding: 10px;
+}
+/*ALTERA AS FORMAS  DA TELA INICIAL */
+.menushape1{
+  width: 450px;
+  height: 400px; 
+  background: linear-gradient(90deg, rgba(43, 247, 179, 0.8) 0%, rgba(98, 246, 189, 0.5) 35%, rgba(0, 255, 213, 0.6) 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  z-index: -1;
+}
+
+
+/*ALTERA A  FORMA DO MENU INICIAL */
+.sidenav{
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 1.5em;
+    color: rgba(24, 80, 41, 0.8);
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidenavshape{
+  width: 400px;
+  height: 500px;
+  background: rgb(37 212 180);
+  border-radius: 10%;
+  transform: rotate(40deg);
+  position: absolute;
+  top: -80px;
+  left: -230px;
+  z-index: -1;
+}
+
+.sidenav ul{
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    margin: 50px 0;
+    height: 360px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ 
+}
+
+.sidenav li:last-child{
+    margin-top: auto;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+ }
+
+.sidenav li a:not(.closebtn) {
+    display: block;
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    width: 160px;
+}
+ .sidenav li:last-child{
+    vertical-align: bottom;
+    font-size: 0.8em;
+    width: 120px;
+    border:1px solid rgba(35, 116, 28, 0.4);
+ }
+.sidenav li.active a {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  color: #555;
+  font-weight: 600;
+}
+.sidenav li a:hover {
+    background-color: #555;
+    color: white;
+}
+ /*
+.profile{
+  padding: 0 25px
+}
+
+.profile img{
+  width: 100px;
+  background-color: rgba(66, 244, 104, 0.4);
+  border:5px solid rgba(244, 215, 66,0.8);
+  float: right;
+  margin: 90 45px;
+
+}*/
+
+.profile h3{
+  position: absolute;
+  font-size: 1.4em;
+  width: 100px;
+  margin: 25px 0;
+  color: #555;
+  top: 75px;
+  left: 20px;
+}
+
+.profile p{
+  position: absolute;
+  top: 130px;
+  left: 20px;
+  color: #000;
+  border-top: 1px solid #fff;
+  letter-spacing: 1px;
+}
+
+.clearfix
+{
+  clear: both;
+}
+
+/* BOTAO CADASTRAR CONTATOS */
+.button-submit2{
+  position: relative;
+  right: 10px;
+  border:1px solid rgb(65, 244, 134);
+  background: rgba(65, 244, 119, 0.7);
+  width: 108px;
+  margin:  15px;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 20%;
+  box-shadow: 4px 4px #1e3b17;
+  color: #565454;
+}
+.button-submit2:hover{
+  box-shadow: 4px 4px #173b22;
+  color: #fff;
+}
+
+
+
+
+
+
+

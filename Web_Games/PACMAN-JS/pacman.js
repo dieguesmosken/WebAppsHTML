@@ -32,7 +32,7 @@ class Pacman {
                 if (map[i][j] === 2) {
                     if (this.getMapX() === j && this.getMapY() === i) {
                         map[i][j] = 3;
-                        score ++;
+                        score++;
                     }
                 }
             }
@@ -86,7 +86,16 @@ class Pacman {
     }
 
     checkGhostCollision() {
-
+        for (let i = 0; i < ghosts.length; i++) {
+            let ghost = ghosts[i];
+            if (
+                ghost.getMapX() == this.getMapX() &&
+                ghost.getMapY == this.getMapY
+            ) {
+                return true;
+            }
+            return false;
+        }
     }
 
     changeDirectionIfPossible() {
@@ -139,10 +148,7 @@ class Pacman {
             this.y + oneBlockSize / 2
         );
         canvasContext.rotate(this.direction * 90 * Math.PI / 180);
-        canvasContext.translate(
-            -this.x - oneBlockSize / 2,
-            -this.y - oneBlockSize / 2
-        );
+        canvasContext.translate(-this.x - oneBlockSize / 2, -this.y - oneBlockSize / 2);
 
         canvasContext.drawImage(
             pacmanFrames,

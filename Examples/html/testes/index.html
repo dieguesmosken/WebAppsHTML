@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>Testes MMD</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+
+
+            <div class="test">
+                <h1 class="testes" id="testes"> Testes MMD</h1>
+                <div class="placar">
+                    <button class="rstScore btn" onclick="restart();">Novo Jogo</button>
+                </div>
+                <!--Placar de autoria de https://t.me/dieguesmosken-->
+                <div class="placar center" id="placar">SCORE: 0000</div>
+
+                <div class="placar" id="maxPlacar">MAX: 0000</div>
+
+                <canvas class="box" id="snake" width="512" height="512"></canvas>
+                <div id="testes" class="testes">DEV BUILD TEST NUMBER #F81D52DF4C1D975E</div>
+                <canvas class="box" id="quadro" width="512" height="512"></canvas>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <script>
+        window.onload = function() {
+            var largura = 512;
+            var altura = 300;
+
+            var quadro = document.getElementById("quadro");
+            quadro.setAttribute("width", largura);
+            quadro.setAttribute("height", altura);
+
+            var ctx = quadro.getContext("2d");
+
+            var desenhando = false;
+
+            quadro.onmousedown = function(evt) {
+                ctx.moveTo(evt.clientX, evt.clientY);
+                desenhando = true;
+            }
+
+            quadro.onmouseup = function() {
+
+                desenhando = false;
+            }
+
+            quadro.onmousemove = function(evt) {
+                if (desenhando) {
+                    ctx.moveTo(evt.clientX, evt.clientY);
+                    ctx.stroke();
+                }
+            }
+        }
+    </script>
+    <!-- <canvas class="box" id="snake" width="512" height="512"></canvas> -->
+</body>
+
+</html>

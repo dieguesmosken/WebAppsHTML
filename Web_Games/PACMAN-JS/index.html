@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacman</title>
+    <style>
+        @font-face {
+            font-family: PixelFont;
+            src: url('fonts/retro-land-mayhem.ttf');
+        }
+        
+        .score {
+            font-family: 'PixelFont';
+        }
+    </style>
 </head>
+
 <body style="margin: 0px; background-color: black; overflow-y: hidden; overflow-x: hidden;">
-    <canvas id="canvas" width="600" height="600"></canvas>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <span class="score">0</span>
     <div style="display: none">
-        <img src="assets/animations.gif" id="animations" alt=""/>
-        <img src="assets/ghost.png" id="ghosts" alt=""/>
+        <img src="assets/animations.gif" id="animations" alt="" />
+        <img src="assets/ghost.png" id="ghosts" alt="" />
 
     </div>
-    
+
     <!-- ** touch controls **  -->
-    <div id="touch">
+    <!-- <div id="touch">
         <div id="up" class="key"></div>
         <div id="down" class="key"></div>
         <div id="left" class="key"></div>
         <div id="right" class="key"></div>
-    </div>
+    </div> -->
 
     <script src="ghost.js"></script>
     <script src="pacman.js"></script>
     <script src="game.js"></script>
 </body>
+
 </html>

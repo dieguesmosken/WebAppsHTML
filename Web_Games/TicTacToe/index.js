@@ -4,11 +4,58 @@ const player2ScoreSpan = document.querySelector('.player2Score');
 const restartBtn = document.querySelector('.restart');
 const rstScore = document.querySelector('.rstScore');
 
-console.log(cell);
-console.log(player1ScoreSpan);
-console.log(player2ScoreSpan);
-console.log(restartBtn);
-console.log(rstScore);
+
+//------------CONSTANTES DO BODY -----------------//
+const nightmode = document.querySelector('.nightmode');
+const container = document.querySelector('.container');
+const body = document.querySelector('.body');
+const btn = document.querySelector('.btn');
+const btn2 = document.querySelector('.btn2');
+const mode = document.getElementById('mode_icon');
+
+mode.addEventListener('click', () => {
+    const form = document.getElementById('container');;
+
+    if (mode.classList.contains('fa-moon')) {
+        mode.classList.remove('fa-moon');
+        mode.classList.add('fa-sun');
+        console.log("nightModeON");
+        form.classList.add('dark');
+        btn.classList.add('dark');
+        btn2.classList.add('dark');
+        nightmode.classList.add('dark');
+
+        return;
+    }
+
+    mode.classList.remove('fa-sun');
+    mode.classList.add('fa-moon');
+    console.log("nightModeOFF");
+    form.classList.remove('dark');
+    btn.classList.remove('dark');
+    btn2.classList.remove('dark');
+    nightmode.classList.remove('dark');
+
+
+
+
+});
+
+let nightModeOn = true;
+console.log(nightModeOn);
+nightMode();
+
+function nightMode() {
+    if (!nightModeOn) {
+
+        nightModeOn = true;
+    } else {
+
+
+        nightModeOn = false;
+    }
+
+}
 
 const winCombinations = [
     [0, 1, 2],
@@ -41,18 +88,50 @@ for (let i = 0; i < cell.length; i++) {
         checkWinner();
 
     });
+
 }
+
+
+let Colors = [];
+// let ColorsBG = ["#007e47", "#0e224b", "#001b3b"];
+//background: linear-gradient(#007e47, #0e224b, #001b3b);
+
+function gerarCor() {
+    for (let i = 0; i < cell.length; i++) {
+
+        const letras = '0123456789ABCDEF';
+        let cor = '#';
+        for (let i = 0; i < 6; i++) {
+            cor += letras[Math.floor(Math.random() * 16)];
+        }
+        Colors.push(cor);
+        console.log(cor);
+        console.log("CorBG: " + Colors.length);
+        container.style = 'background-color:' + Colors[Colors.length - 1] + ");";
+
+
+    }
+
+}
+gerarCor();
+//setInterval(gerarCor, 1000);
+
 
 function addCellsPlayer1(i) {
     cell[i].innerHTML = 'X';
+    cell[i].fillStyle = Colors[i];
     player1.push(i);
+    console.log(i);
     flag = false;
+
 }
 
 function addCellsPlayer2(i) {
     cell[i].innerHTML = 'O';
+    cell[i].fillStyle = Colors[i];
     player2.push(i);
     flag = true;
+
 }
 
 // function checkWinner() {
@@ -118,14 +197,10 @@ rstScore.addEventListener('click', () => {
     drawScore();
     restart();
 
-}
-);
+});
 
 
 
 restartBtn.addEventListener('click', () => {
     restart();
-}
-);
-
-
+});

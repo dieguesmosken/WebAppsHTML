@@ -1,0 +1,31 @@
+@font-face {
+    font-family: InstaFonte;
+    src: url(../fontes/Angelface.otf);
+}
+
+.titulo{
+
+  font-family: InstaFonte;
+  font-size: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+
+
+}
+
+
+#rodape{
+
+  position:absolute;
+  bottom:0;
+  width:100%
+
+}
+
+.margem-topo{
+
+  margin-top: 30px;
+
+
+}

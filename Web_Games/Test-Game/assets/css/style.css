@@ -1,0 +1,49 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(#007e47, #09317f, #2d3b00); */
+    background-image: url('../img/backgrounds/m2/PRE_ORIG_SIZE.png');
+    background-repeat: repeat;
+}
+
+@font-face {
+    font-family: PixelFont;
+    src: url('fonts/retro-land-mayhem.ttf');
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas {
+    width: 576px;
+    height: 324px;
+    /* background-image: url('../img/backgrounds/default_bg.png'); */
+    /* background-color: white; */
+}
+
+.menu {
+    width: 450px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.score,
+.hp,
+.bullets {
+    color: white;
+    font-size: 30px;
+    font-family: 'PixelFont';
+}
+
+.hp img,
+.bullets img {
+    width: 25px;
+}
