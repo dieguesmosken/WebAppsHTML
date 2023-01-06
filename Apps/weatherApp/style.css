@@ -1,0 +1,38 @@
+  /* Estilos CSS para a página */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin: 16px 0;
+  }
+
+  .weather-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    background-color: #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 16px;
+  }
+
+  .weather-card img {
+    width: 128px;
+    height: 128px;
+  }
+
+  .weather-card h2 {
+    font-size: 24px;
+    margin: 8px 0;
+  }
+
+  .weather-card p {
+    font-size: 16px;
+    margin: 4px 0;
+  }
