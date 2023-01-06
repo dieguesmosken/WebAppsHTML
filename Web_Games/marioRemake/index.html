@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Remake</title>
+
+    <style>
+        /* Adicione seu CSS aqui */
+        .jogo {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .personagem {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .obstaculo {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 750px;
+        }
+
+        /* Adicione seu CSS aqui */
+        .jogo {
+            width: 800px;
+            height: 600px;
+            position: relative;
+        }
+
+        .personagem {
+            width: 50px;
+            height: 50px;
+            background-image: url('rat.png');
+            background-size: cover;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .obstaculo {
+            width: 50px;
+            height: 50px;
+            background-image: url('obstacle.png');
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 750px;
+        }
+
+        .cenario {
+            width: 800px;
+            height: 600px;
+            background-image: url('desert.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jogo">
+        <div class="personagem"></div>
+        <div class="obstaculo"></div>
+    </div>
+
+    <script>
+        // Adicione seu JavaScript aqui
+        const personagem = document.querySelector('.personagem');
+        const obstaculo = document.querySelector('.obstaculo');
+
+        const cenario = document.querySelector('.cenario');
+
+        function moverParaDireita() {
+            personagem.style.left = `${parseInt(personagem.style.left) + 5}px`;
+        }
+
+        function moverParaEsquerda() {
+            personagem.style.left = `${parseInt(personagem.style.left) - 5}px`;
+        }
+
+        function pular() {
+            personagem.style.bottom = `${parseInt(personagem.style.bottom) + 50}px`;
+            setTimeout(() => {
+                personagem.style.bottom = `${parseInt(personagem.style.bottom) - 50}px`;
+            }, 500);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                moverParaDireita();
+            }
+            if (event.key === 'ArrowLeft') {
+                moverParaEsquerda();
+            }
+            if (event.key === ' ') {
+                pular();
+            }
+        });
+
+        setInterval(() => {
+            obstaculo.style.left = `${parseInt(obstaculo.style.left) - 5}px`;
+        }, 1000);
+
+
+    </script>
+</body>
+
+</html>
+
+<!-- Path: Web_Games\marioRemake\script2.js -->

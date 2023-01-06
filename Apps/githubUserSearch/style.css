@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f4f4f4;
+}
+
+header h1 {
+    text-align: center;
+}
+
+main {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+img {
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+}

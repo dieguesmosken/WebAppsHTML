@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste jogo</title>
+    <style>
+      /* Adicione seu CSS aqui */
+      .jogo {
+        width: 800px;
+        height: 600px;
+        position: relative;
+      }
+      .personagem {
+        width: 50px;
+        height: 50px;
+        background-image: url('rat.png');
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="jogo" width="800" height="600"></canvas>
+
+    <script>
+      // Adicione seu JavaScript aqui
+      const canvas = document.getElementById('jogo');
+      const context = canvas.getContext('2d');
+      const personagem = {
+        x: 0,
+        y: 500,
+        width: 50,
+        height: 50,
+      };
+      const obstaculos = [
+        { x: 750, y: 550, width: 50, height: 50 },
+        { x: 1500, y: 450, width: 50, height: 50 },
+        { x: 2250, y: 500, width: 50, height: 50 },
+      ];
+      const cenario = {
+        x: 0,
+        y: 0,
+        width: 8000,
+        height: 600,
+      };
+
+      function desenhar() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  context.drawImage(
+    cenario.img,
+    cenario.x,
+    cenario.y,
+    cenario.width,
+    cenario.height,
+  );
+
+  context.drawImage(
+    personagem.img,
+    personagem.x,
+    personagem.y,
+    personagem.width,
+    personagem.height,
+  );
+
+  for (const obstaculo of obstaculos) {
+    context.drawImage(
+      obstaculo.img,
+      obstaculo.x,
+      obstaculo.y,
+      obstaculo.width,
+      obstaculo.height,
+    );
+  }
+
+  if (personagem.pula) {
+    personagem.y -= personagem.velocidade;
+    personagem.velocidade -= 0.5;
+  }
+  if (personagem.y >= 500) {
+    personagem.pula = false;
+    personagem.velocidade = 5;
+    personagem.y = 500;
+  }
+
+  for (const obstaculo of obstaculos) {
+    obstaculo.x -= 5;
+    if (obstaculo.x + obstaculo.width < 0) {
+      obstaculo.x = canvas.width;
+      obstaculo.y = Math.random() * canvas.height - obstaculo.height;
+    }
+  }
+
+  if (personagem.x > canvas.width / 2 && cenario.x > -cenario.width + canvas.width) {
+    personagem.x -= 5;
+    cenario.x -= 5;
+  }
+}
+
+function pular() {
+  personagem.pula = true;
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    pular();
+  }
+});
+
+setInterval(desenhar, 10);
+
+</script>
+    </body>
+</html> 
