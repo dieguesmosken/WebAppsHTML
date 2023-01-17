@@ -5,23 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuário do GitHub</title>
+    <title>Pesquisa de App da MS Store</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- link para main.css -->
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <header>
-        <h1>Perfil de Usuário do GitHub</h1>
+        <h1>Pesquisa de App da MS Store</h1>
     </header>
     <main>
         <form id="form-pesquisa">
-            <label for="usuario">Usuário:</label><br>
-            <input type="text" id="usuario" name="usuario"><br>
+
+            <img src="https://store.rg-adguard.net/img/Store.png" alt="Store Image">
+
+            <label for="usuario">ProductID:</label><br>
+            <input type="text" id="ProductId" name="ProductId" placeholder="Insira o ProductId do app aqui"><br>
             <input type="submit" value="Pesquisar">
         </form>
         <div id="resultados"></div>
+        <div id="mspb-nc9jl2ngc1i" class="9wzdncrfhwb8"></div>
+        <script src="https://storebadge.azureedge.net/src/badge-1.6.1.js"></script>
+        <script>
+            mspb('9wzdncrfhwb8', function (badge) {
+                document.getElementById('mspb - nc9jl2ngc1i').innerHTML = badge;
+            });
+        </script>
     </main>
+
     <footer>
-        <p>Copyright 2021</p>
+        <p>Copyright
+            <a href="https://github.com/dieguesmosken" target="_blank"> @dieguesmosken</a>
+            2023
+        </p>
     </footer>
     <script src="script2.js"></script>
 </body>

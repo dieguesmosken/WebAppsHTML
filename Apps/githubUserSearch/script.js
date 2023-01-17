@@ -79,6 +79,11 @@
                   resultados.innerHTML = '<p>Erro ao pesquisar o usuário</p>';
                 });
             });
-        })
+        }
+        
+        
+        // Envia a requisição à API do GitHub para obter a lista de repositórios
+        
+        )
 
     
