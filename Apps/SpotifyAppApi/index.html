@@ -17,5 +17,36 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        
+        // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
+const token = 'BQALGo393mzBejl4FG3K2gCIs1OD-Lu2OB8M8w5qsxDVW84n_CuBovfqp80FPCM-dgd1ZgsAdlnEO1zthB9hgGUGlTPuiLziuRwYd-Bjmh9xSjZbaYEl87u-vIs-ywcUmc8Pq7K1kYYZDSAwMCPRD36TItd5gEiWjLZiahGFW2m07IeSNHSwgCPAz3saPCCZY2-0rgfXU_cyl67ReI3wD8AodBrW2j4RD25uhxPDobf8tevP9LjwkK9XqkocQImTm52aVRwPoKCn3105P4TA_B_EGwtK';
+async function fetchWebApi(endpoint, method, body) {
+  const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method,
+    body:JSON.stringify(body)
+  });
+  return await res.json();
+}
+
+async function getTopTracks(){
+  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+  return (await fetchWebApi(
+    'v1/me/top/tracks?time_range=short_term&limit=5', 'GET'
+  )).items;
+}
+
+const topTracks = await getTopTracks();
+console.log(
+  topTracks?.map(
+    ({name, artists}) =>
+      `${name} by ${artists.map(artist => artist.name).join(', ')}`
+  )
+);
+
+</script>
 </body>
 </html>
