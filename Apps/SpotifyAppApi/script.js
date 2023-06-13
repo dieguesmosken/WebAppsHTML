@@ -1,7 +1,7 @@
 // Configurar as credenciais da API do Spotify
 const clientId = 'd9d9015415ed4815b3ef143ff2af2abf';
 const clientSecret = 'f7224d1794d84a6bb19c07239cc76f84';
-const redirectUri = 'http://localhost:26543';
+const redirectUri = 'http://localhost:8000';
 
 // Função para fazer uma requisição POST para a API do Spotify// Configurar as credenciais da API do Spotify
 
