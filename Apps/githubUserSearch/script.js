@@ -72,10 +72,11 @@
                         resultados.innerHTML += `<li>${linguagem}: ${linguagens[linguagem]}</li>`;
                       }
                       resultados.innerHTML += '</ul>';
+                      
                     }
-                    */
                     
-                    );
+                    
+                    );*/
                 })
                 .catch(error => {
                   // Exibe um erro caso algo dê errado
