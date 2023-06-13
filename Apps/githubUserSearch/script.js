@@ -50,7 +50,7 @@
             resultados.innerHTML += `<li><a href="${repo.html_url}">${repo.name}</a></li>`;
           }
           resultados.innerHTML += '</ul>';
-/*
+
           // Conta quantas vezes cada linguagem é utilizada pelo usuário
           const linguagens = repos.reduce((acumulador, repo) => {
                     // Conta quantas vezes cada linguagem é utilizada pelo usuário
@@ -64,7 +64,7 @@
                         }
                         return acumulador;
                       }, {});
-            
+            /*
                       // Exibe as linguagens de programação mais utilizadas pelo usuário
                       resultados.innerHTML += '<h3>Linguagens de Programação</h3>';
                       resultados.innerHTML += '<ul>';
@@ -72,11 +72,11 @@
                         resultados.innerHTML += `<li>${linguagem}: ${linguagens[linguagem]}</li>`;
                       }
                       resultados.innerHTML += '</ul>';
-                      
+                      */
                     }
                     
                     
-                    );*/
+                    );
                 })
                 .catch(error => {
                   // Exibe um erro caso algo dê errado
