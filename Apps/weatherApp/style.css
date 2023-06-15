@@ -2,37 +2,69 @@
   body {
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #333;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   h1 {
     font-size: 32px;
     margin: 16px 0;
+    color: #fff;
   }
 
-  .weather-card {
+  nav {
+    margin-top: 20px;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    width: 400px;
-    height: 300px;
-    background-color: #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 16px;
   }
 
-  .weather-card img {
-    width: 128px;
-    height: 128px;
+  nav ul li {
+    margin-right: 10px;
   }
 
-  .weather-card h2 {
-    font-size: 24px;
-    margin: 8px 0;
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
   }
 
-  .weather-card p {
-    font-size: 16px;
-    margin: 4px 0;
+  nav ul li a:hover {
+    background-color: #555;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav ul {
+      flex-direction: column;
+    }
+
+    nav ul li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
   }

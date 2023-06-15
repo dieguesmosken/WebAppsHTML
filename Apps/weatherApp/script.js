@@ -34,18 +34,12 @@ function getWeather(lat, lng) {
   <p>Sensação térmica: ${main.feels_like}°C</p>
   <p>Umidade: ${main.humidity}%</p>
 `;
-
-
             // Adicionar a previsão do tempo à página
             document.getElementById("weather").appendChild(weatherCard);
 
-
-
         });
 
-
 }
-
 
 // Obter a localização do usuário
 navigator.geolocation.getCurrentPosition(
