@@ -352,7 +352,54 @@ gameLoop();
 
 // let handleTouch = () => {
 //     let xDiff = touchStartX - touchEndX;
+// Touch events
+let touchStartX = 0;
+let touchStartY = 0;
+let touchMoveX = 0;
+let touchMoveY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
 
+canvas.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+});
+
+canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    touchMoveX = e.touches[0].clientX;
+    touchMoveY = e.touches[0].clientY;
+});
+
+canvas.addEventListener('touchend', function(e) {
+    touchEndX = touchMoveX - touchStartX;
+    touchEndY = touchMoveY - touchStartY;
+    handleJoystick();
+});
+
+function handleJoystick() {
+    let deltaX = touchEndX;
+    let deltaY = touchEndY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            // Right
+            pacman.direction = DIRECTION_RIGHT;
+        } else {
+            // Left
+            pacman.direction = DIRECTION_LEFT;
+        }
+    } else {
+        if (deltaY > 0) {
+            // Down
+            pacman.direction = DIRECTION_DOWN;
+        } else {
+            // Up
+            pacman.direction = DIRECTION_UP;
+        }
+    }
+}
+    
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
