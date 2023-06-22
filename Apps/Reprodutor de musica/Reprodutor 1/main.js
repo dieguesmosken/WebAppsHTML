@@ -192,12 +192,6 @@ function playpauseTrack() {
     else pauseTrack();
 }
 
-function playTrackOnPlaylist() {
-    // Switch between playing and pausing
-    // depending on the current state
-    playTrack();
-
-}
 
 function playTrack() {
     // Play the loaded track
