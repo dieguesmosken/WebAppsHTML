@@ -1,158 +1,153 @@
 body {
-    /* background-color: lightgreen; */
-    /* Smoothly transition the background color */
-    transition: background-color .5s;
+  /* background-color: lightgreen; */
+  /* Smoothly transition the background color */
+  transition: background-color 0.5s;
 }
-
 
 /* Using flex with the column direction to
      align items in a vertical direction */
 
 .player {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    /* minha fonte */
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  /* minha fonte */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .details {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 .track-art {
-    margin: 25px;
-    height: 250px;
-    width: 250px;
-    background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
-    background-size: cover;
-    background-position: center;
-    border-radius: 15%;
+  margin: 25px;
+  height: 250px;
+  width: 250px;
+  background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
+  background-size: cover;
+  background-position: center;
+  border-radius: 15%;
 }
-
 
 /* Changing the font sizes to suitable ones */
 
 .now-playing {
-    font-size: 1rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 400;
+  font-size: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 400;
 }
 
 .track-name {
-    font-size: 3rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 600;
+  font-size: 3rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 600;
 }
 
 .track-artist {
-    font-size: 1.5rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 400;
+  font-size: 1.5rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 400;
 }
-
 
 /* Using flex with the row direction to
      align items in a horizontal direction */
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .playpause-track,
 .prev-track,
 .next-track {
-    padding: 25px;
-    opacity: 0.8;
-    /* Smoothly transition the opacity */
-    transition: opacity .2s;
-    color: black;
+  padding: 25px;
+  opacity: 0.8;
+  /* Smoothly transition the opacity */
+  transition: opacity 0.2s;
+  color: black;
 }
-
 
 /* Change the opacity when mouse is hovered */
 
 .playpause-track:hover,
 .prev-track:hover,
 .next-track:hover {
-    opacity: 1.0;
+  opacity: 1;
 }
-
 
 /* Define the slider width so that it scales properly */
 
 .slider_container {
-    width: 75%;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 75%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /* Modify the appearance of the slider */
 
 .seek_slider,
 .volume_slider {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: black;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: black;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
-
 
 /* Modify the appearance of the slider thumb */
 
 .seek_slider::-webkit-slider-thumb,
 .volume_slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
-    cursor: pointer;
-    border-radius: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
 }
-
 
 /* Change the opacity when mouse is hovered */
 
 .seek_slider:hover,
 .volume_slider:hover {
-    opacity: 1.0;
+  opacity: 1;
 }
 
 .seek_slider {
-    width: 60%;
+  width: 60%;
 }
 
 .volume_slider {
-    width: 30%;
+  width: 30%;
 }
 
 .current-time,
 .total-duration {
-    padding: 10px;
+  padding: 10px;
 }
 
 i.fa-volume-down,
 i.fa-volume-up {
-    padding: 10px;
+  padding: 10px;
 }
-
 
 /* Change the mouse cursor to a pointer
      when hovered over */
@@ -161,5 +156,73 @@ i.fa-play-circle,
 i.fa-pause-circle,
 i.fa-step-forward,
 i.fa-step-backward {
-    cursor: pointer;
+  cursor: pointer;
+}
+/* Estilos básicos para a lista de reprodução */
+.playlist {
+  margin-top: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.playlist h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.playlist p {
+  font-size: 14px;
+  color: gray;
+  margin: 0;
+  padding: 10px;
+}
+
+.playlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playlist li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: #f9f9f9;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #24242462 !important;
+  transition: background-color 0.2s ease;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.playlist li:hover {
+    background-color: #f9f9f962 !important;
+  }
+  
+
+.playlist li.active {
+  background-color: #eee;
+}
+
+.playlist li .track-art {
+  height: 40px;
+  width: 40px;
+}
+
+.playlist li .track-name-playlist {
+  margin-left: 10px;
+}
+
+.playlist li .total-duration-playlist {
+  margin-left: auto;
+}
+
+.playlist li i.fa-play-circle {
+  font-size: 3rem;
+  color: #000;
+  cursor: pointer;
 }

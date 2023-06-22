@@ -1,72 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" id="body">
-
-<head>
-    <title>Simple Music Player</title>
-    <!-- Load FontAwesome icons -->
+<html lang="pt-br" id="body">
+  <head>
+    <title>Teuzin Music Player</title>
+    <!-- carrega a fonte customizada -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
-    <link rel="stylesheet" href="../../../Examples/css/fontawesome/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="../../../Examples/css/fontawesome/css/all.min.css"
+    />
     <script src="js/import.js"></script>
-    <!-- Load the custom CSS style file -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- Load the main script for the player -->
+    <!-- carrrega o arquivo css -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- carrerga o arquivo js -->
 
     <script defer src="main.js"></script>
+    <script defer src="js/playlist.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="player">
+      <!-- Define a seção para exibir os detalhes da faixa atualmente reproduzida -->
+      <div class="details">
+        <div class="now-playing">PLAYING x OF y</div>
+        <div class="track-art"></div>
+        <div class="track-name">Track Name</div>
+        <div class="track-artist">Artist @TeuzinYTBR</div>
+      </div>
 
-        <!-- Define the section for displaying details -->
-        <div class="details">
-            <div class="now-playing">
-                PLAYING x OF y
-            </div>
-            <div class="track-art"></div>
-            <div class="track-name">
-                Track Name
-            </div>
-            <div class="track-artist">
-                Artist @TeuzinYTBR
-            </div>
+      <!-- Define a seção para exibir os botões de controle de reprodução -->
+      <div class="buttons">
+        <div class="prev-track" onclick="prevTrack()">
+          <i class="fa fa-step-backward fa-2x"></i>
         </div>
-
-        <!-- Define the section for displaying track buttons -->
-        <div class="buttons">
-
-            <div class="prev-track" onclick="prevTrack()">
-                <i class="fa fa-step-backward fa-2x"></i>
-            </div>
-            <div class="playpause-track" onclick="playpauseTrack()">
-                <i class="fa fa-play-circle fa-5x"></i>
-
-            </div>
-            <div class="next-track" onclick="nextTrack()">
-                <i class="fa fa-step-forward fa-2x"></i>
-            </div>
+        <div class="playpause-track" onclick="playpauseTrack()">
+          <i class="fa fa-play-circle fa-5x"></i>
         </div>
-
-        <!-- Define the section for displaying the seek slider-->
-        <div class="slider_container">
-            <div class="current-time">
-                00:00
-            </div>
-            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
-            <div class="total-duration">
-                00:00
-            </div>
+        <div class="next-track" onclick="nextTrack()">
+          <i class="fa fa-step-forward fa-2x"></i>
         </div>
+      </div>
 
-        <!-- Define the section for displaying the volume slider-->
-        <div class="slider_container">
-            <i class="fa fa-volume-down"></i>
-            <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
-            <i class="fa fa-volume-up"></i>
-        </div>
+      <!-- Define a seção para exibir o controle deslizante de busca -->
+      <div class="slider_container">
+        <div class="current-time">00:00</div>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="0"
+          class="seek_slider"
+          onchange="seekTo()"
+        />
+        <div class="total-duration">00:00</div>
+      </div>
+
+      <!-- Define a seção para exibir o controle deslizante de volume -->
+      <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="99"
+          class="volume_slider"
+          onchange="setVolume()"
+        />
+        <i class="fa fa-volume-up"></i>
+      </div>
     </div>
 
-
-</body>
-
+    <!-- Define a seção para exibir a lista de reprodução -->
+    <div class="playlist">
+      <h2>Esta seção é a lista de reprodução</h2>
+      <p>Atualmente em construção</p>
+      <ul id="menu"></ul>
+    </div>
+  </body>
 </html>
