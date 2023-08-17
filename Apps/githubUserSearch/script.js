@@ -29,9 +29,6 @@
         <p>Seguidores: ${data.followers}</p>
         <p>Repositórios: ${data.public_repos}</p>
       `;
-
-      // Envia a requisição à API do GitHub para obter a lista de repositóri
-
     // Envia a requisição à API do GitHub para obter a lista de repositórios
     fetch(`https://api.github.com/users/${usuario}/repos`, {
         headers: {
