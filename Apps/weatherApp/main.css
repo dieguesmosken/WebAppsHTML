@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #808080;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: #272727;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #fff;
+    text-align: center;
+}
+
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+main form {
+    margin-bottom: 20px;
+}
+
+main form img {
+    width: 100px;
+    border-radius: 5%;
+    margin-bottom: 10px;
+    background-color: #272727;
+}
+
+
+
+main form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+main form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+main form input[type="submit"] {
+    background-color: #272727;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+main form input[type="submit"]:hover {
+    background-color: #1b1b1b;
+}
+
+main form input[type="submit"]:active {
+    background-color: #000;
+    transform: translateY(4px);
+}
+
+main #resultados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+main #resultados .resultado {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main #resultados .resultado img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+main #resultados .resultado a {
+    text-decoration: none;
+    color: #7159c1;
+    font-size: 18px;
+}
+
+main #resultados .resultado a:hover {
+    color: #563d7c;
+}
+
+main #resultados .resultado p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    line-height: 20px;
+}
+
+footer {
+    background-color: #272727;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    bottom: 0;
+    position: fixed;
+}
+
+footer p {
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: rgb(39, 72, 37);
+}
