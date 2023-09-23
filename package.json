@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "express": "^4.18.2",
     "js-pixel-fonts": "^1.6.0",
+    "node-fetch": "^2.6.1",
     "yarn": "^1.22.19"
   }
 }

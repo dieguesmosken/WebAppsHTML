@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Consulta de APP ID</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #app-id-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Consulta de APP ID</h1>
+    <div id="app-id-form">
+        <label for="app-id">Digite o APP ID:</label>
+        <input type="text" id="app-id" placeholder="Digite o APP ID">
+        <button onclick="consultarAppId()">Consultar</button>
+    </div>
+    <div id="result">
+        <!-- Os dados serão exibidos aqui -->
+    </div>
+
+    <script>
+        function consultarAppId() {
+            const appId = document.getElementById("app-id").value;
+            const apiUrl = '/consultar-app-id';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ appId }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Exibir os dados recebidos
+                    const resultDiv = document.getElementById("result");
+                    resultDiv.innerHTML = `
+          <h2>Dados Recebidos:</h2>
+          <pre>
+              ${JSON.stringify(data, null, 4)}
+          </pre>
+      `;
+                })
+                .catch(error => {
+                    console.error("Ocorreu um erro ao consultar a API:", error);
+                });
+        }
+
+    </script>
+</body>
+
+</html>
